@@ -7,7 +7,7 @@
 
 
 void writeFile(){
-    QFile archivo("/home/dschulz/Escritorio/numeros-cpp.txt");
+    QFile archivo("numeros-cpp.txt");
     archivo.open(QFile::WriteOnly);
     QTextStream out(&archivo);
     out.setCodec("UTF-8");
