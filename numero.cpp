@@ -98,7 +98,7 @@ QString Numero::enLetras(const QString &num, bool rellenar){
 
         QString finalStr = QTextCodec::codecForName("UTF-8")->toUnicode(finalText);
         finalStr=finalStr.simplified().toLower();
-        //finalStr[0]=finalStr[0].toUpper();
+        finalStr[0]=finalStr[0].toUpper();
 
         return finalStr;
 
