@@ -5,12 +5,12 @@ Utilería para convertir números a su representación literal en castellano esc
 
 
 Instrucciones
-=============
+-------------
 
 Agrega numero.h y numero.cpp a tu proyecto. Luego:
 
 
-
+```cpp
    #include "numero.h"
 
    ...
@@ -18,5 +18,5 @@ Agrega numero.h y numero.cpp a tu proyecto. Luego:
    QString letras = Numero::enLetras(234234);
 
    // letras = "Doscientos treinta y cuatro mil doscientos treinta y cuatro"
-
+```
 
