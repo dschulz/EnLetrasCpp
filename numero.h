@@ -20,6 +20,7 @@ private:
 
     static QList<QByteArray> convertirPeriodos(const QStringList &);
 
+    static QString convertirAUnicode(const QByteArray &);
     static QString reverse(const QString &);
     static QString agrupar(const QString &numero, QChar cs, int dc);
     static QByteArray convertirPeriodo(quint32,int);

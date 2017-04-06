@@ -58,12 +58,16 @@ const QByteArray Numero::MIL = "mil";
 const QByteArray Numero::Y = " y ";
 
 
+QString Numero::convertirAUnicode(const QByteArray &ba){
+    return QTextCodec::codecForName("UTF-8")->toUnicode(ba);
+}
+
 QString Numero::enLetras(const QString &num, bool rellenar){
 
     QString digitos = num;
 
     if(0==digitos.length()){
-        return QTextCodec::codecForName("UTF-8")->toUnicode(INVALIDO);
+        return convertirAUnicode(INVALIDO);
     }
 
     /// Numero entero
@@ -74,14 +78,14 @@ QString Numero::enLetras(const QString &num, bool rellenar){
             char entero = digitos.toInt(&ok, 10); /// base 10 explicito
 
             if(ok&& (entero==0)){
-                QString cero = QTextCodec::codecForName("UTF-8")->toUnicode(UNIDADES[0]);
+                QString cero = convertirAUnicode(UNIDADES[0]);
                 cero[0]=cero[0].toUpper();
                 return cero;
             }
         }
 
         if(digitos.length() > NUM_PERIODOS*DIGITOS_POR_PERIODO){
-            return QTextCodec::codecForName("UTF-8")->toUnicode(MUY_GRANDE);
+            return convertirAUnicode(MUY_GRANDE);
         }
 
         QChar sep('#');
@@ -96,7 +100,7 @@ QString Numero::enLetras(const QString &num, bool rellenar){
             }
         }
 
-        QString finalStr = QTextCodec::codecForName("UTF-8")->toUnicode(finalText);
+        QString finalStr = convertirAUnicode(finalText);
         finalStr=finalStr.simplified().toLower();
         finalStr[0]=finalStr[0].toUpper();
 
@@ -154,7 +158,7 @@ QString Numero::enLetras(const QString &num, bool rellenar){
 
     }else{
         /// Numero invalido
-        return QTextCodec::codecForName("UTF-8")->toUnicode(INVALIDO);
+        return convertirAUnicode(INVALIDO);
     }
 }
 
@@ -171,7 +175,7 @@ QString Numero::enLetras(quint64 numero){
 
     // Este caso conviene resolver aqui mismo
     if(numero == 0L){
-        QString cero = QTextCodec::codecForName("UTF-8")->toUnicode(UNIDADES[0]);
+        QString cero = convertirAUnicode(UNIDADES[0]);
         cero[0]=cero[0].toUpper();
         return cero;
     }
